@@ -20,7 +20,9 @@ class App extends Component {
                 <input onChange={this.onInputChange.bind(this)} value={this.state.value} placeholder="type something here"/>
                 <div>
                     Hey!!! Welcome to React world <p/>
-                    {this.state.value}
+                    Your text: {this.state.value} <p/>
+                    Uppercase: {this.state.value.toString().toUpperCase()} <p/>
+                    Lowercase: {this.state.value.toString().toLowerCase()} <p/>
                 </div>
             </div>
         );
