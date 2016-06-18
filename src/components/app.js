@@ -1,29 +1,29 @@
 import React, {Component} from 'react';
+import Header from './Header/Header';
+import InputContainer from './InputContainer/InputContainer';
+import TodoList from './TodoList/TodoList';
 
 class App extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            value: ''
-        }
+            task: ''
+        };
+
+        this.onTaskAdd = this.onTaskAdd.bind(this);
     }
 
-    onInputChange(e){
-        let value = e.target.value;
-        this.setState({value});
+    onTaskAdd(value){
+        this.setState({task: value});
     }
 
     render() {
         return (
             <div>
-                <input onChange={this.onInputChange.bind(this)} value={this.state.value} placeholder="type something here"/>
-                <div>
-                    Hey!!! Welcome to React world <p/>
-                    Your text: {this.state.value} <p/>
-                    Uppercase: {this.state.value.toString().toUpperCase()} <p/>
-                    Lowercase: {this.state.value.toString().toLowerCase()} <p/>
-                </div>
+                <Header/>
+                <InputContainer onTaskAdd={(value)=>{this.onTaskAdd(value)}}/>
+                <TodoList task={this.state.task}/>
             </div>
         );
     }
